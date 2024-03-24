@@ -10,13 +10,17 @@ import Button from "./ui/Button";
 
 function RestaurantDetails() {
   return (
-    <div className="restaurant__details">
-      <div className="bg-white mt-20 mx-auto py-5 px-10">
-        <div className="flex gap-5">
-          <div className="w-[50%] bg-gray-500 rounded-lg">
-            <img src="" alt="" />
+    <div className="restaurant-details">
+      <div className="bg-white mt-20 mx-auto py-5 md:px-10">
+        <div className=" md:flex gap-5">
+          <div className="md:w-[50%] w-full bg-gray-500 ">
+            <img
+              className="object-cover h-full w-full"
+              src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              alt=""
+            />
           </div>
-          <div className="w-full justify-between xl:flex block text-text py-5">
+          <div className="w-full justify-between xl:flex block text-text py-5 px-5">
             <div className="flex flex-col gap-2">
               <h1 className="text-4xl font-bold ">Restaurant Name</h1>
               <span className="">Chicken · Salads · Healthy</span>

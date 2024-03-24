@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { IoArrowForward, IoArrowBack, IoCartOutline } from "react-icons/io5";
 import PopularItem from "./menu/PopularItem";
-import MenuNav from './layout/MenuNav';
-import MenuItem from './menu/MenuItem';
+import MenuNav from "./layout/MenuNav";
+import MenuItem from "./menu/MenuItem";
 
 function Menu() {
   const scrollContainer = useRef<HTMLDivElement>(null);
@@ -17,7 +17,7 @@ function Menu() {
       <MenuNav />
       <div className="bg-secondarybg p-10">
         <div className="grid grid-cols-3 gap-10">
-          <div className="col-span-2">
+          <div className="col-span-3 md:col-span-2">
             <div className="popular-items">
               <h1 className="text-2xl font-bold mb-8 text-text">
                 Popular with other people
@@ -64,17 +64,17 @@ function Menu() {
                 </div>
               </div>
             </div>
-            <div className='mt-10'>
-              <h1 className="text-2xl font-bold mb-8 text-text">
-                Platters
-              </h1>
-              <div className="grid grid-cols-2 gap-5">
+            <div className="mt-10">
+              <h1 className="text-2xl font-bold mb-8 text-text">Platters</h1>
+              <div className="grid lg:grid-cols-2 gap-5">
+                <MenuItem />
+                <MenuItem />
                 <MenuItem />
               </div>
             </div>
           </div>
-          <div className="col-span-1 sticky top-0">
-            <div className="bg-white border rounded-md p-5 h-screen">
+          <div className="col-span-1 sticky top-0 hidden md:block">
+            <div className="bg-white border rounded-md p-5">
               <div className="text-lighttext/50 items-center mx-auto justify-center flex flex-col h-[450px]">
                 <IoCartOutline size={60} />
                 <p>Your basket is empty</p>

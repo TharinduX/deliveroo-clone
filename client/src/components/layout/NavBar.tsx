@@ -13,7 +13,11 @@ function NavBar() {
             <img src={logo} width={121} alt="logo" />
             <Search />
             <div className="flex gap-5">
-              <Button text="Sign up or Log in" Icon={IoHomeOutline} />
+              <Button
+                className="hidden md:flex"
+                text="Sign up or Log in"
+                Icon={IoHomeOutline}
+              />
               <Button text="Account" Icon={IoPersonOutline} />
             </div>
           </div>

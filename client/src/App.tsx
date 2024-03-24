@@ -2,7 +2,7 @@ import React from "react";
 import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
 import RestaurantDetails from "./components/RestaurantDetails";
-import Menu from './components/Menu';
+import Menu from "./components/Menu";
 
 function App() {
   return (
