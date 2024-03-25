@@ -15,7 +15,7 @@ function Menu() {
   return (
     <>
       <MenuNav />
-      <div className="bg-secondarybg p-10">
+      <div className="bg-secondarybg p-5 md:p-10">
         <div className="grid grid-cols-3 gap-10">
           <div className="col-span-3 md:col-span-2">
             <div className="popular-items">

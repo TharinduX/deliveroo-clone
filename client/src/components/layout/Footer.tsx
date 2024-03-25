@@ -5,7 +5,7 @@ import AppleStore from "../../assets/appstore.svg";
 function Footer() {
   return (
     <div className="bg-dark">
-      <div className="container md:flex mx-auto w-full py-8 gap-5">
+      <div className="container flex flex-col md:flex-row mx-auto w-full p-8 gap-5">
         <div className="w-full text-white bg-lightdark p-5">
           <h1 className="font-bold text-lg">Discover Deliveroo</h1>
           <div className="flex flex-col gap-1 mt-5">

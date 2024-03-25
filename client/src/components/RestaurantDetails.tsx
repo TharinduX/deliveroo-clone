@@ -11,7 +11,7 @@ import Button from "./ui/Button";
 function RestaurantDetails() {
   return (
     <div className="restaurant-details">
-      <div className="bg-white mt-20 mx-auto py-5 md:px-10">
+      <div className="bg-white mt-18 md:mt-20 mx-auto py-5 md:px-10">
         <div className=" md:flex gap-5">
           <div className="md:w-[50%] w-full bg-gray-500 ">
             <img
