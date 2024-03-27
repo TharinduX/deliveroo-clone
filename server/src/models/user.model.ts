@@ -62,11 +62,6 @@ class User extends Model {
   })
   declare lastName: string;
 
-  @Column({
-    type: DataType.STRING,
-  })
-  declare refreshToken: string;
-
   @CreatedAt
   declare createdAt: Date;
 

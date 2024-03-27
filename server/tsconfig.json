@@ -14,9 +14,10 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
-      "@models/*": ["db/models/*"],
-      "@controllers/*": ["api/controllers/*"],
-      "@routes/*": ["api/routes/*"]
+      "@models/*": ["models/*"],
+      "@controllers/*": ["controllers/*"],
+      "@routes/*": ["routes/*"],
+      "@config/*": ["config/*"]
     }
   },
   "include": ["src/**/*"]

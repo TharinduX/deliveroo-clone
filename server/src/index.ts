@@ -1,13 +1,22 @@
 import express, { Express } from 'express';
+import authRoutes from '@routes/auth.routes.js';
 import userRoutes from '@routes/user.routes.js';
-import sequelize from './db/config.js';
+import sequelize from '@config/sequelize.config.js';
 import dotenv from 'dotenv';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
 const port = process.env.PORT!;
 const app: Express = express();
+
 app.use(express.json());
+app.use(cors());
+app.use(cookieParser());
+
+//Auth routes
+app.use('/api/auth', authRoutes);
 
 //User routes
 app.use('/api/user', userRoutes);
