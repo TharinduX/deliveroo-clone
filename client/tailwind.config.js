@@ -12,6 +12,7 @@ module.exports = {
         lighttext: "#585C5C",
         darkgreen: "#4D7C1B",
         secondarybg: "#F9FAFA",
+        facebook: "#3B5998",
       },
     },
     fontFamily: {
