@@ -1,26 +1,27 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
-import NavBar from "./components/layout/NavBar";
-import Footer from "./components/layout/Footer";
+import { Routes, Route } from "react-router-dom";
 import RestaurentPage from "./pages/RestaurentPage";
 import SignUp from "./pages/SignupPage";
 import Login from "./pages/LoginPage";
+import Layout from "./components/Layout";
+import RequireAuth from "./features/auth/RequireAuth";
+import Dashboard from "./pages/DashboardPage";
 
 function App() {
   return (
-    <Router>
-      <Toaster />
-      <div className="App">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<RestaurentPage />} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* Public Routes */}
+        <Route index element={<RestaurentPage />} />
+        <Route path="register" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
+
+        {/* Protected Routes */}
+        <Route element={<RequireAuth />}>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }
 

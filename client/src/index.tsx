@@ -2,6 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import "./index.css";
+import { Provider } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import store from "./app/store";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -13,7 +17,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <GoogleOAuthProvider clientId={clientId}>
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <BrowserRouter>
+          <Toaster />
+          <Routes>
+            <Route path="/*" element={<App />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </React.StrictMode>
   </GoogleOAuthProvider>,
 );
