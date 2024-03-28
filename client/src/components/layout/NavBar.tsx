@@ -13,7 +13,14 @@ function NavBar() {
       <div className="px-10 mx-auto">
         <div className="flex">
           <div className="flex items-center justify-between w-full">
-            <img src={logo} width={121} alt="logo" />
+            <a href="/">
+              <img
+                className="cursor-pointer"
+                src={logo}
+                width={121}
+                alt="logo"
+              />
+            </a>
             <Search />
             <div className="flex gap-5">
               <Button

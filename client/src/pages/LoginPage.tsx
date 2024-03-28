@@ -1,4 +1,7 @@
 import React from "react";
+// import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import { z } from "zod";
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -7,6 +10,8 @@ import axios from "axios";
 import { IoMailOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-hot-toast";
+import { setCredentials } from "../features/auth/authSlice";
+import { useLoginMutation } from "../features/auth/authApiSlice";
 
 const schema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -16,6 +21,10 @@ const schema = z.object({
 });
 
 function Login() {
+  // const navigate = useNavigate();
+  const [login] = useLoginMutation();
+  const dispatch = useDispatch();
+
   const {
     control,
     handleSubmit,
@@ -35,14 +44,21 @@ function Login() {
   });
 
   const onSubmit = async (data: any) => {
+    const { email, password } = data;
     try {
-      await axios.post("http://localhost:5000/api/auth/login", {
-        email: data.email,
-        password: data.password,
-      });
-      toast.success("Logged in with Email");
-    } catch (error: any) {
-      toast.error(error.response.data.message);
+      const userData = await login({ email, password }).unwrap();
+      dispatch(setCredentials({ ...userData, email }));
+    } catch (err: any) {
+      if (!err?.response) {
+        console.log(err);
+        toast.error("No response from server");
+      } else if (err.response.status === 400) {
+        toast.error("Invalid credentials");
+      } else if (err.response.status === 403) {
+        toast.error("Unauthorized");
+      } else {
+        toast.error("An error occurred");
+      }
     }
   };
 
@@ -126,5 +142,4 @@ function Login() {
     </div>
   );
 }
-
 export default Login;
