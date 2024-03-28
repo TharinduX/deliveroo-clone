@@ -14,6 +14,11 @@ enum Role {
   CUSTOMER = 'customer',
 }
 
+enum Provider {
+  GOOGLE = 'google',
+  EMAIL = 'email',
+}
+
 @Table({
   timestamps: true,
   tableName: 'users',
@@ -34,7 +39,7 @@ class User extends Model {
   })
   declare email: string;
 
-  @AllowNull(false)
+  @AllowNull(true)
   @Column({
     type: DataType.STRING,
   })
@@ -46,7 +51,7 @@ class User extends Model {
   })
   declare role: Role;
 
-  @AllowNull(false)
+  @AllowNull(true)
   @Column({
     type: DataType.STRING,
   })
@@ -61,6 +66,12 @@ class User extends Model {
     type: DataType.STRING,
   })
   declare lastName: string;
+
+  @Column({
+    type: DataType.ENUM(...Object.values(Provider)),
+    defaultValue: Provider.EMAIL,
+  })
+  declare provider: Provider;
 
   @CreatedAt
   declare createdAt: Date;

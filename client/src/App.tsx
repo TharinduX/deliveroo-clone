@@ -1,17 +1,26 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import NavBar from "./components/layout/NavBar";
 import Footer from "./components/layout/Footer";
-import RestaurantDetails from "./components/RestaurantDetails";
-import Menu from "./components/Menu";
+import RestaurentPage from "./pages/RestaurentPage";
+import SignUp from "./pages/SignupPage";
+import Login from "./pages/LoginPage";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      <RestaurantDetails />
-      <Menu />
-      <Footer />
-    </div>
+    <Router>
+      <Toaster />
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<RestaurentPage />} />
+          <Route path="/register" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

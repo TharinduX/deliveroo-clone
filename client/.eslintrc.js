@@ -24,5 +24,7 @@ module.exports = {
     project: "./tsconfig.json",
   },
   plugins: ["react", "@typescript-eslint", "import"],
-  rules: {},
+  rules: {
+    "react/jsx-props-no-spreading": "off",
+  },
 };
