@@ -48,17 +48,8 @@ function Login() {
     try {
       const userData = await login({ email, password }).unwrap();
       dispatch(setCredentials({ ...userData, email }));
-    } catch (err: any) {
-      if (!err?.response) {
-        console.log(err);
-        toast.error("No response from server");
-      } else if (err.response.status === 400) {
-        toast.error("Invalid credentials");
-      } else if (err.response.status === 403) {
-        toast.error("Unauthorized");
-      } else {
-        toast.error("An error occurred");
-      }
+    } catch (error: any) {
+      toast.error(error.data.message);
     }
   };
 
