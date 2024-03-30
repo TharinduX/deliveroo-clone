@@ -164,6 +164,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   const accessToken = jwt.sign(
     {
       userInfo: {
+        id: user.id,
         email: user.email,
         role: user.role,
       },
@@ -175,7 +176,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   const refreshToken = jwt.sign(
     { email: user.email },
     process.env.REFRESH_TOKEN_SECRET!,
-    { expiresIn: '1d' },
+    { expiresIn: '20s' },
   );
 
   res.cookie('jwt', refreshToken, {
@@ -220,6 +221,7 @@ export const refresh = asyncHandler(async (req: Request, res: Response) => {
       const accessToken = jwt.sign(
         {
           userInfo: {
+            userId: user.id,
             email: user.email,
             role: user.role,
           },

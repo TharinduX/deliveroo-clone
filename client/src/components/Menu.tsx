@@ -61,6 +61,48 @@ function Menu() {
                     price={23.99}
                     img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                   />
+                  <PopularItem
+                    id="12"
+                    name="Avocado Caesar Salad"
+                    kcal={123}
+                    price={23.99}
+                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  />
+                  <PopularItem
+                    id="12"
+                    name="Avocado Caesar Salad"
+                    kcal={123}
+                    price={23.99}
+                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  />
+                  <PopularItem
+                    id="12"
+                    name="Avocado Caesar Salad"
+                    kcal={123}
+                    price={23.99}
+                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  />
+                  <PopularItem
+                    id="12"
+                    name="Avocado Caesar Salad"
+                    kcal={123}
+                    price={23.99}
+                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  />
+                  <PopularItem
+                    id="12"
+                    name="Avocado Caesar Salad"
+                    kcal={123}
+                    price={23.99}
+                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  />
+                  <PopularItem
+                    id="12"
+                    name="Avocado Caesar Salad"
+                    kcal={123}
+                    price={23.99}
+                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  />
                 </div>
               </div>
             </div>

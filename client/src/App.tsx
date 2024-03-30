@@ -4,7 +4,7 @@ import RestaurentPage from "./pages/RestaurentPage";
 import SignUp from "./pages/SignupPage";
 import Login from "./pages/LoginPage";
 import Layout from "./components/Layout";
-import RequireAuth from "./features/auth/RequireAuth";
+import RequireAuth from "./middleware/RequireAuth";
 import Dashboard from "./pages/DashboardPage";
 
 function App() {

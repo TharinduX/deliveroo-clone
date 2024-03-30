@@ -1,30 +1,31 @@
+/* eslint-disable prettier/prettier */
 module.exports = {
   env: {
     browser: true,
     es2021: true,
     jest: true,
   },
-  extends: ["airbnb", "airbnb-typescript", "plugin:prettier/recommended"],
+  extends: ['airbnb', 'airbnb-typescript', 'plugin:prettier/recommended'],
   overrides: [
     {
       env: {
         node: true,
       },
-      files: [".eslintrc.{js,cjs}"],
+      files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: "script",
+        sourceType: 'script',
       },
     },
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: "./tsconfig.json",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: './tsconfig.json',
   },
-  plugins: ["react", "@typescript-eslint", "import"],
+  plugins: ['react', '@typescript-eslint', 'import', 'prettier'],
   rules: {
-    "react/jsx-props-no-spreading": "off",
+    'react/jsx-props-no-spreading': 'off',
   },
 };
