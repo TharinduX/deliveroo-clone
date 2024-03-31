@@ -170,14 +170,16 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
       },
     },
     process.env.ACCESS_TOKEN_SECRET!,
-    { expiresIn: '10s' },
+    { expiresIn: '15m' },
   );
 
   const refreshToken = jwt.sign(
     { email: user.email },
     process.env.REFRESH_TOKEN_SECRET!,
-    { expiresIn: '20s' },
+    { expiresIn: '1d' },
   );
+
+  const { passwordHash, createdAt, updatedAt, ...userInfo } = user.toJSON();
 
   res.cookie('jwt', refreshToken, {
     httpOnly: true,
@@ -186,7 +188,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  res.status(200).json({ accessToken });
+  res.status(200).json({ userInfo, accessToken });
 });
 
 // @desc Refresh
@@ -227,7 +229,7 @@ export const refresh = asyncHandler(async (req: Request, res: Response) => {
           },
         },
         process.env.ACCESS_TOKEN_SECRET!,
-        { expiresIn: '1m' },
+        { expiresIn: '1d' },
       );
       res.json({ accessToken });
     },

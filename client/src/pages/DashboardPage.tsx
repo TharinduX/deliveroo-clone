@@ -7,8 +7,9 @@ import {
 
 function Dashboard() {
   const user = useSelector(selectCurrentUser);
+  const { email, role } = user || { email: "", role: "" };
   const token = useSelector(selectCurrentToken);
-  const welcome = user ? `Welcome ${user}` : "Welcome!";
+  const welcome = user ? `Welcome ${email} ${role}` : "Welcome!";
   const tokenMessage = token ? `Your token is: ${token}` : "No token found";
   return (
     <div>

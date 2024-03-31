@@ -2,7 +2,7 @@ import React from "react";
 
 function MenuNav() {
   return (
-    <div className="bg-white border-y-1 border drop-shadow-sm py-6 sticky md:top-20 top-16 z-50 overflow-x-scroll no-scrollbar">
+    <div className="bg-white border-y-1 border drop-shadow-sm py-6 sticky md:top-20 top-16 z-40 overflow-x-scroll no-scrollbar">
       <ul className="px-10 flex gap-4 text-secondary text-sm">
         <li>
           <a

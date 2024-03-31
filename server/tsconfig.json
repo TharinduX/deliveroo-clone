@@ -18,7 +18,8 @@
       "@controllers/*": ["controllers/*"],
       "@routes/*": ["routes/*"],
       "@config/*": ["config/*"],
-      "@schemas/*": ["schemas/*"]
+      "@schemas/*": ["schemas/*"],
+      "@middlewares/*": ["middlewares/*"]
     }
   },
   "include": ["src/**/*"]

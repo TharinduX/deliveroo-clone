@@ -59,6 +59,7 @@
     "@controllers": "dist/controllers",
     "@routes": "dist/routes",
     "@config": "dist/config",
-    "@schemas": "dist/schemas"
+    "@schemas": "dist/schemas",
+    "@middlewares": "dist/middlewares"
   }
 }
