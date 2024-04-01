@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import RestaurentPage from "./pages/RestaurentPage";
+import RestaurantPage from "./pages/RestaurantPage";
 import SignUp from "./pages/SignupPage";
 import Login from "./pages/LoginPage";
 import Layout from "./components/Layout";
@@ -12,7 +12,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* Public Routes */}
-        <Route index element={<RestaurentPage />} />
+        <Route path="menu/:slug" element={<RestaurantPage />} />
         <Route path="register" element={<SignUp />} />
         <Route path="login" element={<Login />} />
 

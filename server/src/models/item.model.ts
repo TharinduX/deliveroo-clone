@@ -28,11 +28,22 @@ class MenuItem extends Model {
   })
   declare categoryId: number;
 
+  @Column({
+    type: DataType.BOOLEAN,
+  })
+  declare isPopular: boolean;
+
   @AllowNull(false)
   @Column({
     type: DataType.STRING,
   })
   declare name: string;
+
+  @AllowNull(false)
+  @Column({
+    type: DataType.STRING,
+  })
+  declare itemSlug: string;
 
   @Column({
     type: DataType.STRING,

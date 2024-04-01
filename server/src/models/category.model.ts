@@ -11,8 +11,8 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import Menu from './menu.model.js';
 import MenuItem from './item.model.js';
+import Restaurant from './restaurant.model.js';
 
 @Table({
   timestamps: true,
@@ -42,17 +42,17 @@ class Category extends Model {
   declare categorySlug: string;
 
   @AllowNull(false)
-  @ForeignKey(() => Menu)
+  @ForeignKey(() => Restaurant)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.UUID,
   })
-  declare menuId: number;
+  declare restaurantId: string;
 
-  @BelongsTo(() => Menu)
-  declare menu: Menu;
+  @BelongsTo(() => Restaurant)
+  declare restaurant: Restaurant;
 
   @HasMany(() => MenuItem)
-  declare items: MenuItem[];
+  declare menuItems: MenuItem[];
 
   @CreatedAt
   declare createdAt: Date;

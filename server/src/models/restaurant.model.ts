@@ -11,8 +11,8 @@ import {
   ForeignKey,
   BelongsTo,
 } from 'sequelize-typescript';
-import Menu from './menu.model.js';
 import User from './user.model.js';
+import Category from './category.model.js';
 
 @Table({
   timestamps: true,
@@ -70,8 +70,8 @@ class Restaurant extends Model {
   })
   declare image: string;
 
-  @HasMany(() => Menu)
-  declare menus: Menu[];
+  @HasMany(() => Category)
+  declare categories: Category[];
 
   @BelongsTo(() => User)
   declare owner: User;
