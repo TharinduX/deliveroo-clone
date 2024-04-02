@@ -7,7 +7,9 @@ import {
   DataType,
   CreatedAt,
   UpdatedAt,
+  HasMany,
 } from 'sequelize-typescript';
+import Restaurant from './restaurant.model.js';
 
 enum Role {
   OWNER = 'owner',
@@ -72,6 +74,9 @@ class User extends Model {
     defaultValue: Provider.EMAIL,
   })
   declare provider: Provider;
+
+  @HasMany(() => Restaurant)
+  declare restaurants: Restaurant[];
 
   @CreatedAt
   declare createdAt: Date;

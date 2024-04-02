@@ -7,27 +7,29 @@ import {
 } from "react-icons/io5";
 import DeliveryBike from "../assets/bike.svg";
 import Button from "./ui/Button";
+import { RestaurantType } from "../types";
 
-function RestaurantDetails() {
+interface RestaurantDetailsProps {
+  restaurant: RestaurantType;
+}
+
+function RestaurantDetails({ restaurant }: RestaurantDetailsProps) {
   return (
     <div className="restaurant-details">
       <div className="bg-white mt-18 md:mt-20 mx-auto py-5 md:px-10">
         <div className=" md:flex gap-5">
-          <div className="md:w-[50%] w-full bg-gray-500 ">
+          <div className="md:w-[50%] h-[400px] w-full bg-gray-500 ">
             <img
               className="object-cover h-full w-full"
-              src="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              src={restaurant.image}
               alt=""
             />
           </div>
           <div className="w-full justify-between xl:flex block text-text py-5 px-5">
             <div className="flex flex-col gap-2">
-              <h1 className="text-4xl font-bold ">Restaurant Name</h1>
-              <span className="">Chicken · Salads · Healthy</span>
-              <span>
-                0.20 miles away · Opens at 11:00 on Monday · £7.00 minimum ·
-                £0.49 delivery
-              </span>
+              <h1 className="text-4xl font-bold ">{restaurant.name}</h1>
+              <span className="">{restaurant.address}</span>
+              <span>{restaurant.description}</span>
               <div className="pt-5 flex items-center gap-3 text-lighttext hover:cursor-pointer">
                 <IoInformationCircleOutline size={22} />
                 <div className="flex flex-col">

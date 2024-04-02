@@ -11,5 +11,5 @@ module.exports = {
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
-  ignorePatterns: ['**/*.js', '**/*.cjs'],
+  ignorePatterns: ['**/*.js', '**/*.cjs', '__tests__/**/*.ts'],
 };

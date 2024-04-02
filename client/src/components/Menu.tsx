@@ -3,8 +3,13 @@ import { IoArrowForward, IoArrowBack, IoCartOutline } from "react-icons/io5";
 import PopularItem from "./menu/PopularItem";
 import MenuNav from "./layout/MenuNav";
 import MenuItem from "./menu/MenuItem";
+import { RestaurantType } from "../types";
 
-function Menu() {
+interface RestaurantDetailsProps {
+  restaurant: RestaurantType;
+}
+
+function Menu({ restaurant }: RestaurantDetailsProps) {
   const scrollContainer = useRef<HTMLDivElement>(null);
 
   const scroll = (scrollOffset: number) => {
@@ -12,9 +17,10 @@ function Menu() {
       scrollContainer.current.scrollLeft += scrollOffset;
     }
   };
+
   return (
     <>
-      <MenuNav />
+      <MenuNav restaurant={restaurant} />
       <div className="bg-secondarybg p-5 md:p-10">
         <div className="grid grid-cols-3 gap-10">
           <div className="col-span-3 md:col-span-2">
@@ -47,31 +53,40 @@ function Menu() {
                   ref={scrollContainer}
                   className=" flex gap-5 overflow-x-scroll no-scrollbar py-2 scroll-smooth"
                 >
-                  <PopularItem
-                    id="12"
-                    name="Avocado Caesar Salad"
-                    kcal={123}
-                    price={23.99}
-                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  />
-                  <PopularItem
-                    id="12"
-                    name="Avocado Caesar Salad"
-                    kcal={123}
-                    price={23.99}
-                    img="https://images.pexels.com/photos/1639557/pexels-photo-1639557.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  />
+                  {restaurant.categories.map((category) =>
+                    category.menuItems
+                      .filter((item) => item.isPopular)
+                      .map((item) => (
+                        <div key={item.id}>
+                          <PopularItem
+                            id={item.id}
+                            name={item.name}
+                            kcal={item.kcal}
+                            price={item.price}
+                            img={item.image}
+                          />
+                        </div>
+                      )),
+                  )}
                 </div>
               </div>
             </div>
-            <div className="mt-10">
-              <h1 className="text-2xl font-bold mb-8 text-text">Platters</h1>
-              <div className="grid lg:grid-cols-2 gap-5">
-                <MenuItem />
-                <MenuItem />
-                <MenuItem />
+            {restaurant.categories.map((category) => (
+              <div
+                key={category.id}
+                id={category.categorySlug}
+                className="mt-10"
+              >
+                <h1 className="text-2xl capitalize font-bold mb-8 text-text">
+                  {category.name}
+                </h1>
+                <div className="grid lg:grid-cols-2 gap-5">
+                  {category.menuItems.map((item) => (
+                    <MenuItem key={item.id} item={item} />
+                  ))}
+                </div>
               </div>
-            </div>
+            ))}
           </div>
           <div className="col-span-1 sticky top-0 hidden md:block">
             <div className="bg-white border rounded-md p-5">

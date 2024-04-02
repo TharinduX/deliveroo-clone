@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 interface Request extends ExpressRequest {
+  id?: string;
   user?: string;
   roles?: string;
 }
@@ -24,6 +25,7 @@ export const verifyJWT = (req: Request, res: Response, next: NextFunction) => {
       process.env.ACCESS_TOKEN_SECRET!,
       async (err: any, decoded: any) => {
         if (err) return res.status(403).json({ message: 'Forbidden' });
+        req.id = decoded.userInfo.id;
         req.user = decoded.userInfo.email;
         req.roles = decoded.userInfo.role;
         next();

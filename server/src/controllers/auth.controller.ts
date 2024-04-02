@@ -11,6 +11,7 @@ import loginSchema from '@schemas/login.schema.js';
 import googleLoginSchema from '@schemas/googlelogin.schema.js';
 
 dotenv.config();
+//@ts-ignore
 const Ajv = ajvModule.default;
 const ajv = new Ajv();
 
@@ -164,12 +165,13 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
   const accessToken = jwt.sign(
     {
       userInfo: {
+        id: user.id,
         email: user.email,
         role: user.role,
       },
     },
     process.env.ACCESS_TOKEN_SECRET!,
-    { expiresIn: '10s' },
+    { expiresIn: '15m' },
   );
 
   const refreshToken = jwt.sign(
@@ -178,6 +180,8 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     { expiresIn: '1d' },
   );
 
+  const { passwordHash, createdAt, updatedAt, ...userInfo } = user.toJSON();
+
   res.cookie('jwt', refreshToken, {
     httpOnly: true,
     secure: true,
@@ -185,7 +189,7 @@ export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 
-  res.status(200).json({ accessToken });
+  res.status(200).json({ userInfo, accessToken });
 });
 
 // @desc Refresh
@@ -220,12 +224,13 @@ export const refresh = asyncHandler(async (req: Request, res: Response) => {
       const accessToken = jwt.sign(
         {
           userInfo: {
+            userId: user.id,
             email: user.email,
             role: user.role,
           },
         },
         process.env.ACCESS_TOKEN_SECRET!,
-        { expiresIn: '1m' },
+        { expiresIn: '1d' },
       );
       res.json({ accessToken });
     },

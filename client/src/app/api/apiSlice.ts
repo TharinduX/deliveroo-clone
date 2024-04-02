@@ -1,31 +1,27 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { setCredentials, logOut } from "../../features/auth/authSlice";
-
-type RootState = {
-  auth: {
-    token: string | null;
-  };
-};
+/* eslint-disable prettier/prettier */
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { setCredentials, logOut } from '../../features/auth/authSlice';
+import type { RootState } from '../store';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/auth",
-  credentials: "include",
+  baseUrl: 'http://localhost:5000/api',
+  credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     const { token } = (getState() as RootState).auth;
     if (token) {
-      headers.set("authorization", `Bearer ${token}`);
+      headers.set('authorization', `Bearer ${token}`);
     }
     return headers;
   },
 });
 
-const basQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
+const baseQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
   let result = await baseQuery(args, api, extraOptions);
 
   if (result?.error?.status === 403) {
-    console.log("Reauthenticating...");
+    console.log('Reauthenticating...');
     // send refresh token to get new access token
-    const refreshResult = await baseQuery("/refresh", api, extraOptions);
+    const refreshResult = await baseQuery('/auth/refresh', api, extraOptions);
     console.log(refreshResult);
     if (refreshResult?.data) {
       const { user } = api.getState().auth;
@@ -41,6 +37,6 @@ const basQueryWithReauth = async (args: any, api: any, extraOptions: any) => {
 };
 
 export default createApi({
-  baseQuery: basQueryWithReauth,
+  baseQuery: baseQueryWithReauth,
   endpoints: () => ({}),
 });
