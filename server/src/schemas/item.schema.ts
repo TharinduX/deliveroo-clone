@@ -7,7 +7,7 @@ export default {
     price: { type: 'number' },
     description: { type: 'string' },
     image: { type: 'string' },
-    kcal: { type: 'string' },
+    kcal: { type: 'number' },
   },
   required: ['name', 'categoryId', 'price'],
 };

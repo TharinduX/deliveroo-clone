@@ -11,6 +11,7 @@ import loginSchema from '@schemas/login.schema.js';
 import googleLoginSchema from '@schemas/googlelogin.schema.js';
 
 dotenv.config();
+//@ts-ignore
 const Ajv = ajvModule.default;
 const ajv = new Ajv();
 

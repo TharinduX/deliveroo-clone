@@ -36,6 +36,8 @@ app.use('/api/owner', verifyRole('owner'), verifyJWT, ownerRoutes);
 //Customer routes
 app.use('/api/customer', verifyRole('customer'), verifyJWT, customerRoutes);
 
+export default app;
+
 sequelize
   .sync()
   .then(() => {

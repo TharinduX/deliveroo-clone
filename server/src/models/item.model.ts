@@ -56,9 +56,9 @@ class MenuItem extends Model {
   declare image: string;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.INTEGER,
   })
-  declare kcal: string;
+  declare kcal: number;
 
   @AllowNull(false)
   @Column({

@@ -10,6 +10,7 @@ import MenuItem from '@models/item.model.js';
 import itemSchema from '@schemas/item.schema.js';
 
 dotenv.config();
+//@ts-ignore
 const Ajv = ajvModule.default;
 const ajv = new Ajv();
 
@@ -128,7 +129,8 @@ export const createItem = asyncHandler(async (req: Request, res: Response) => {
     res.status(400).json({ message: validate.errors });
     return;
   }
-  const { name, price, categoryId, description, kcal, image } = req.body;
+  const { name, price, categoryId, description, kcal, image, isPopular } =
+    req.body;
 
   const itemSlug = name
     .toLowerCase()
@@ -157,6 +159,7 @@ export const createItem = asyncHandler(async (req: Request, res: Response) => {
     name,
     itemSlug,
     price,
+    isPopular,
     categoryId: category.id,
     description,
     kcal,

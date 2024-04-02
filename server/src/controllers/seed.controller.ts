@@ -23,11 +23,16 @@ export const generateMenuItems = async (req: Request, res: Response) => {
   for (let i = 0; i < numItems; i++) {
     const menuItem = {
       name: faker.lorem.words(),
+      itemSlug: faker.helpers.slugify(faker.lorem.words()),
       isPopular: faker.datatype.boolean(0.4),
       description: faker.lorem.paragraph(2),
       price: faker.commerce.price({ min: 800, max: 2000 }),
       kcal: faker.number.int({ min: 200, max: 1000 }),
-      image: faker.image.food(),
+      image: faker.image.urlLoremFlickr({
+        category: 'foods',
+        width: 200,
+        height: 200,
+      }),
       categoryId: categoryId,
     };
     menuItems.push(menuItem);
