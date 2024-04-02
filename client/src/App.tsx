@@ -6,12 +6,14 @@ import Login from "./pages/LoginPage";
 import Layout from "./components/Layout";
 import RequireAuth from "./middleware/RequireAuth";
 import Dashboard from "./pages/DashboardPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         {/* Public Routes */}
+        <Route path="/" element={<HomePage />} />
         <Route path="menu/:slug" element={<RestaurantPage />} />
         <Route path="register" element={<SignUp />} />
         <Route path="login" element={<Login />} />

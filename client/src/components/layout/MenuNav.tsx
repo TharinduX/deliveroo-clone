@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import { RestaurantType } from "../../types";
 
@@ -22,11 +23,10 @@ function MenuNav({ restaurant }: RestaurantDetailsProps) {
           <li key={category.id}>
             <button
               type="button"
-              className={`${
-                activeCategory === category.categorySlug
-                  ? "bg-primary text-white font-bold"
-                  : "hover:text-primary"
-              } px-4 py-1 text-nowrap rounded-full`}
+              className={`${activeCategory === category.categorySlug
+                ? "bg-primary text-white font-bold"
+                : "hover:text-primary"
+                } px-4 py-1 text-nowrap rounded-full`}
               onClick={() => scrollToCategory(category.categorySlug)}
             >
               {category.name}

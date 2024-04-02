@@ -173,7 +173,7 @@ export const createItem = asyncHandler(async (req: Request, res: Response) => {
 });
 
 // @desc Get restaurant details by slug
-// @route POST /api/public/restaurant/:slug
+// @route GET /api/public/restaurant/:slug
 // @access Public - anyone can get the restaurant details
 export const getRestaurantDetails = asyncHandler(
   async (req: Request, res: Response) => {
@@ -200,6 +200,24 @@ export const getRestaurantDetails = asyncHandler(
 
     res.status(200).json({
       ...restaurant.toJSON(),
+    });
+  },
+);
+
+// @desc Get all restaurants
+// @route GET /api/public/restaurants
+// @access Public - anyone can get the restaurants
+export const getRestaurants = asyncHandler(
+  async (req: Request, res: Response) => {
+    const restaurants = await Restaurant.findAll();
+
+    if (!restaurants) {
+      res.status(404).json({ message: 'No restaurants found!' });
+      return;
+    }
+
+    res.status(200).json({
+      restaurants,
     });
   },
 );

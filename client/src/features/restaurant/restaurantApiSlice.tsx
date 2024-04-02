@@ -8,7 +8,14 @@ export const restaurantApiSlice = apiSlice.injectEndpoints({
         method: "GET",
       }),
     }),
+    getRestaurants: builder.query({
+      query: () => ({
+        url: "/public/restaurants",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetRestaurantQuery } = restaurantApiSlice;
+export const { useGetRestaurantQuery, useGetRestaurantsQuery } =
+  restaurantApiSlice;
